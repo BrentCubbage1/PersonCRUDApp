@@ -1,7 +1,7 @@
-package Service;
+package Brent.Cubbage.CRUDpractice.Service;
 
-import Repository.Person;
-import Repository.PersonRepository;
+import Brent.Cubbage.CRUDpractice.Repository.Person;
+import Brent.Cubbage.CRUDpractice.Repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class PersonService {
     }
 
     public Person readById(Long id) {
-        return personRepository.findById(id).isPresent() ? personRepository.findById(id).get() : null;
+        return personRepository.findById(id).get();
     }
 
     public List<Person> readAll(){
@@ -34,11 +34,11 @@ public class PersonService {
         return personList;
     }
 
-    public Person update(Long id, String name){
+    public Person update(Long id, Person person){
         Person updatePerson = readById(id);
-        updatePerson.setName(name);
-        personRepository.save(updatePerson);
-        return updatePerson;
+        updatePerson.setName(person.getName());
+        updatePerson.setId(person.getId());
+        return personRepository.save(updatePerson);
     }
 
     public Person delete(Long id){

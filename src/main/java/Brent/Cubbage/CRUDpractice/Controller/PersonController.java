@@ -1,10 +1,8 @@
-package Controller;
+package Brent.Cubbage.CRUDpractice.Controller;
 
-import Repository.Person;
-import Service.PersonService;
-import org.apache.coyote.Response;
+import Brent.Cubbage.CRUDpractice.Service.PersonService;
+import Brent.Cubbage.CRUDpractice.Repository.Person;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -43,8 +41,8 @@ public class PersonController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity<Person> update(@PathVariable Long id, String name){
-        Person updatedPerson = personService.update(id, name);
+    public ResponseEntity<Person> update(@PathVariable Long id, @RequestBody Person person){
+        Person updatedPerson = personService.update(id, person);
 
         return ResponseEntity.status(HttpStatus.OK).body(updatedPerson);
     }

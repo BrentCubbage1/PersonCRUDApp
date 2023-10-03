@@ -59,7 +59,7 @@ function read(event) {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
         },
-        url: "read" + personIdValue,
+        url: "/person/read/" + personIdValue,
         success: function (response) {
             alert(JSON.stringify(response));
         },
