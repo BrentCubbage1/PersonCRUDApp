@@ -1,5 +1,5 @@
 # https://dev.to/lucasleon/heroku-is-not-free-anymore-so-ill-teach-you-how-to-deploy-your-spring-boot-services-to-rendercom-with-maven-and-docker-aca
-FROM openjdk:8-jdk-alpine as build
+FROM openjdk:19-jdk-alpine as build
 WORKDIR /workspace/app
 COPY mvnw .
 COPY .mvn .mvn
